@@ -1,1 +1,25 @@
-
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: sleep
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sleep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sleep
+  template:
+    metadata:
+      labels:
+        app: sleep
+    spec:
+      serviceAccountName: sleep
+      containers:
+      - name: sleep
+        image: curlimages/curl:7.85.0
+        command: ["/bin/sleep", "3650d"]
+        imagePullPolicy: IfNotPresent
