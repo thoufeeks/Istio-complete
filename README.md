@@ -1,4 +1,4 @@
-# Istio-complete
+# Istio-complete with Canary
 
 This is a useful resource for anyone interested in securing a Kubernetes cluster using Istio service mesh. It also includes a canary deployment demo along with all the necessary YAML files.
 
@@ -40,6 +40,11 @@ spec:
   mtls:
     mode: STRICT
 EOF
+-----------------------------------
+Commands
+
+kubectl exec "$SLEEP_POD" -c sleep -- curl http://helloworld:5000/hello
+
 
 -----------------------
 Removing
